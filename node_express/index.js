@@ -1,6 +1,5 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
-const path = require('path')
 const app = express()
 const hbs = exphbs.create({
     defaultLayout: 'main',
