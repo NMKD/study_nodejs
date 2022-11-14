@@ -10,18 +10,10 @@ class Course {
         this.id = uuid()
     }
 
-    toJson() {
-        return {
-            title: this.title,
-            price: this.price,
-            url: this.url,
-            id: this.id
-        }
-    }
     // преобразовать в формат JSON и сохранить файл
     async save() {
-        const courses = await Course.getAll()
-        courses.push(this.toJson())
+        const courses = await this.getAll()
+        courses.push(this)
 
         return new Promise((resolve, reject) => {
             fs.writeFile(path.join(__dirname, '..', 'data', 'courses.json'),
@@ -54,7 +46,7 @@ class Course {
     }
 
     static async getId(id) {
-        const courses = await Course.getAll()
+        const courses = await this.getAll()
         return courses.find(c => c.id === id)
     }
 }
