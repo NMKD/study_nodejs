@@ -2,6 +2,11 @@
     padding: 0 2rem;
 }
 
+html {
+    margin: 0;
+    padding: 0;
+}
+
 .price {
     font-size: 1.5rem;
 }
@@ -18,10 +23,17 @@
 }
 
 .course img {
-   max-width: 400px;
-   height: auto;
+    max-width: 400px;
+    height: auto;
 }
 
 .course .price.big {
     font-size: 2.5rem;
+}
+
+.card-action.flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
 }

@@ -24,7 +24,7 @@ router.get('/:id/edit', async (req, res) => {
 
 router.post('/edit', async (req, res) => {
     await Course.update(req.body)
-    res.redirect('/')
+    res.redirect('/courses')
 })
 
 router.get('/:id', async (req, res) => {
