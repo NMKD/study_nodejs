@@ -1,5 +1,6 @@
 const uuid = require('uuid').v4
 const fs = require('fs')
+const { resolve } = require('path')
 const path = require('path')
 
 class Course {
@@ -43,6 +44,25 @@ class Course {
             )
         })
 
+    }
+
+    static async update(course) {
+        const courses = await this.getAll()
+        const i = courses.findIndex(k => k.id === course.id)
+        courses[i] = course
+
+        return new Promise((resolve, reject) => {
+            fs.writeFile(path.join(__dirname, '..', 'data', 'courses.json'),
+              JSON.stringify(courses),
+              (err) => {
+                if (err) {
+                    reject(err)
+                } else {
+                    resolve()
+                }
+              }
+            )
+        })
     }
 
     static async getId(id) {
