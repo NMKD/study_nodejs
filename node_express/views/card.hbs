@@ -1,5 +1,6 @@
 <h1>Корзина</h1>
 
+<div id="card">
     {{#if courses.length}}
     <table class="striped">
         <thead>
@@ -7,6 +8,7 @@
                 <th>Название</th>
                 <th>Кол-во</th>
                 <th>Цена</th>
+                <th>Действия</th>
             </tr>
         </thead>
         <tbody>
@@ -16,7 +18,10 @@
             <tr>
                 <td>{{title}}</td>
                 <td>{{count}}</td>
-                <td class="total-table__price">{{price}}</td>
+                <td class="price total-table__price">{{price}}</td>
+                <td>
+                    <button class="waves-effect waves-light btn-small js-remove" data-id="{{id}}">Удалить</button>
+                </td>
             </tr>
 
 
@@ -24,18 +29,14 @@
         </tbody>
     </table>
     <div class="total">
-        <div><strong>Всего</strong></div>
-        <div class="price">{{priceJson}}</div>
+        <div>
+            <strong>
+                Итого:
+            </strong>
+        </div>
+        <div class="price total-table__price">{{priceJson}}</div>
     </div>
-    {{!-- <table>
-        <tbody>
-            <tr class="total">
-                <td>Всего</td>
-                <td>{{priceJson}}</td>
-            </tr>
-        </tbody>
-    </table> --}}
-
     {{else}}
     <p>Корзина пуста</p>
     {{/if}}
+</div>

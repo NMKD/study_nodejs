@@ -4,10 +4,10 @@ const fs = require('fs')
 // equire.main.filename
 
 class Card {
-
+    // Object
     static async add(course) {
         const card = await this.fetch()
-        console.log(course)
+        // console.log(course)
         const i = card.courses.findIndex(k => k.id === course.id)
         const candidate = card.courses[i]
         
@@ -33,6 +33,31 @@ class Card {
             })
         })
 
+    }
+    // id
+    static async remove(id) {
+        console.log(id)
+        const card = await this.fetch()
+        let i = card.courses.findIndex(k => k.id === id)
+        const course = card.courses[i]
+        
+        if (course.count === 1) {
+            card.courses = card.courses.filter(k => k.id !== id)
+        } else {
+            card.courses[i].count--
+        }
+        
+        card.price -= Number(course.price)
+
+        return new Promise((resolve, reject) => {
+            fs.writeFile(path.join(__dirname, '..', 'data', 'card.json'), JSON.stringify(card), (err) => {
+                if (err) {
+                    reject(err)
+                } else {
+                    resolve(card)
+                }
+            })
+        })
     }
 
     static async fetch() {
