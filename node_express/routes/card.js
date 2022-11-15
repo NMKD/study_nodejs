@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
         isCard: true,
         title: `Корзина`,
         courses: card.courses,
-        price: card.price
+        priceJson: card.price
     })
 })
 

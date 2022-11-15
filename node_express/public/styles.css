@@ -37,3 +37,11 @@ html {
     align-items: center;
     justify-content: space-between;
 }
+
+.total {
+    padding: 1.5rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
