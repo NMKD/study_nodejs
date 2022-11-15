@@ -1,6 +1,5 @@
 const uuid = require('uuid').v4
 const fs = require('fs')
-const { resolve } = require('path')
 const path = require('path')
 
 class Course {
@@ -30,7 +29,7 @@ class Course {
         })
     }
 
-    static getAll() {
+    static getAll() { 
         return new Promise((resolve, reject) => {
             fs.readFile(path.join(__dirname, '..', 'data', 'courses.json'),
                 'utf-8',

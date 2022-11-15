@@ -1,7 +1,8 @@
 const {Router} = require('express')
+const router = Router()
 const Course = require('../models/course')
 const Card = require('../models/card')
-const router = Router()
+
 
 router.post('/add', async (req, res) => {
     const course = await Course.getId(req.body.id)
@@ -12,8 +13,10 @@ router.post('/add', async (req, res) => {
 router.get('/', async (req, res) => {
     const card = await Card.fetch()
     res.render('card', {
+        isCard: true,
         title: `Корзина`,
-        card
+        courses: card.courses,
+        price: card.price
     })
 })
 
