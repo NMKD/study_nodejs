@@ -16,7 +16,12 @@ document.querySelector('#card').addEventListener('click', (e) => {
     if (e.target.classList.contains('js-remove')) {
         const id = e.target.dataset.id
         console.log(e.target)
-        request(id).then(location.reload())
+        request(id)
+
+        setTimeout(()=>{
+            location.reload()
+        }, 500)
+        
     }
 })
 
